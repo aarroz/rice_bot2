@@ -22,6 +22,7 @@ pub fn main() {
 	let discord = Discord::from_bot_token(
 		&env::var("DISCORD_TOKEN").expect("Expected token"),
 	).expect("login failed");
+	let prefix: &str = "!";
 
 	// Establish and use a websocket connection
 	let (mut connection, ready) = discord.connect().expect("connect failed");
@@ -39,23 +40,23 @@ pub fn main() {
 				println!("{} says: {}", message.author.name, message.content);
 				if message.content == "!test" {
 					let _ = discord.send_message(message.channel_id, "This is a reply to the test.", "", false);
-				} else if message.content == "!quit" {
+				} else if message.content == prefix.to_owned() + "quit" {
 					    println!("Quitting.");
 					    break
                 }
-                if message.content == "!help" {
+                if message.content == prefix.to_owned() + "help" {
                     let _ = discord.send_message(message.channel_id, "I can't help you. I'm just a bot.", "", false);
                 }
-                if message.content == "!about" {
+                if message.content == prefix.to_owned() + "about" {
                     let _ = discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false);
                 }
-                if message.content == "!uber" {
+                if message.content == prefix.to_owned() + "uber" {
                     let _ = discord.send_message(message.channel_id, "Fuck off m8.", "", false);
                 }
-                if message.content == "!ask" {
+                if message.content == prefix.to_owned() + "ask" {
                     let _ = discord.send_message(message.channel_id, "Not just yet, I'll have the answers soon.", "", false);
                 }
-				if message.content == "!givemeyourcode" {
+				if message.content == prefix.to_owned() + "givemeyourcode" {
 					let _ = discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false);
 				}
 
