@@ -1,1 +1,0 @@
-{"rustc":2692670034823971972,"features":"[\"openssl\", \"rustc-serialize\", \"secure\"]","target":7196953346245240310,"profile":4597243770934309319,"deps":[["openssl v0.7.14",2561585286358768029],["rustc-serialize v0.3.24",15533007816513142851],["time v0.1.37",3929899128136570009],["url v1.5.0",1690032045881282504]],"local":{"Precalculated":"0.2.5"},"rustflags":[]}
