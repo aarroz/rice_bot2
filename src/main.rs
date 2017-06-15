@@ -55,9 +55,12 @@ pub fn main() {
                 if message.content == "!ask" {
                     let _ = discord.send_message(message.channel_id, "Not just yet, I'll have the answers soon.", "", false);
                 }
+				if message.content == "!givemeyourcode" {
+					let _ = discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2")
+				}
 
 			}
-			
+
 			Ok(_) => {}
 			Err(discord::Error::Closed(code, body)) => {
 				println!("Gateway closed on us with code {:?}: {}", code, body);
