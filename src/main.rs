@@ -1,4 +1,5 @@
 extern crate discord;
+extern crate rand;
 
 use discord::{Discord, ChannelRef, State};
 use discord::voice::AudioReceiver;
@@ -38,11 +39,14 @@ pub fn main() {
 		match connection.recv_event() {
 			Ok(Event::MessageCreate(message)) => {
 				println!("{} says: {}", message.author.name, message.content);
+				let mut split = message.content.split(" ");
+				let command = split.next().unwrap_or("");
+				let argument = split.next().unwrap_or("");
+
 				if message.content == "!test" {
 					let _ = discord.send_message(message.channel_id, "This is a reply to the test.", "", false);
 				} else if message.content == prefix.to_owned() + "quit" {
-					    println!("Quitting.");
-					    break
+					    let _ = discord.send_message(message.channel_id, "Go fuck yourself Striped.", "", false);
                 }
                 if message.content == prefix.to_owned() + "help" {
                     let _ = discord.send_message(message.channel_id, "I can't help you. I'm just a bot.", "", false);
@@ -59,9 +63,7 @@ pub fn main() {
 				if message.content == prefix.to_owned() + "givemeyourcode" {
 					let _ = discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false);
 				}
-
-			}
-
+}
 			Ok(_) => {}
 			Err(discord::Error::Closed(code, body)) => {
 				println!("Gateway closed on us with code {:?}: {}", code, body);
