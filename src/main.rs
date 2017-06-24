@@ -6,18 +6,6 @@ use discord::voice::AudioReceiver;
 use discord::model::{Event, UserId, ChannelType};
 use std::env;
 
-struct VoiceTest;
-
-impl AudioReceiver for VoiceTest {
-	fn speaking_update(&mut self, ssrc: u32, user_id: UserId, speaking: bool) {
-		println!("[{}] is {:?} -> {}", ssrc, user_id, speaking);
-	}
-
-	fn voice_packet(&mut self, ssrc: u32, sequence: u16, timestamp: u32, stereo: bool, _data: &[i16]) {
-		println!("[{}] ({}, {}) stereo = {}", ssrc, sequence, timestamp, stereo);
-	}
-}
-
 pub fn main() {
 	// Log in to Discord using a bot token from the environment
 	let discord = Discord::from_bot_token(
@@ -62,6 +50,9 @@ pub fn main() {
                 }
 				if message.content == prefix.to_owned() + "givemeyourcode" {
 					let _ = discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false);
+				}
+				if message.content == prefix.to_owned() {
+					let _ = discord.send_message(message.channel_id, "Not a valid command?", "", false);
 				}
 }
 			Ok(_) => {}
