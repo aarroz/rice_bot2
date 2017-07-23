@@ -1,66 +1,135 @@
 extern crate discord;
-extern crate rand;
 
-use discord::{Discord, ChannelRef, State};
-use discord::voice::AudioReceiver;
-use discord::model::{Event, UserId, ChannelType};
 use std::env;
+use discord::{Discord, State};
+use discord::model::Event;
+
 
 pub fn main() {
 	// Log in to Discord using a bot token from the environment
 	let discord = Discord::from_bot_token(
 		&env::var("DISCORD_TOKEN").expect("Expected token"),
 	).expect("login failed");
-	let prefix: &str = "!";
 
-	// Establish and use a websocket connection
+	// establish websocket and voice connection
 	let (mut connection, ready) = discord.connect().expect("connect failed");
+	println!("[Ready] {} is serving {} servers", ready.user.username, ready.servers.len());
 	let mut state = State::new(ready);
-	let channel_count: usize = state.servers().iter()
-		.map(|srv| srv.channels.iter()
-			.filter(|chan| chan.kind == ChannelType::Text)
-			.count()
-		).fold(0, |v, s| v + s);
-	println!("[Ready] {} logging {} servers with {} text channels", state.user().username, state.servers().len(), channel_count);
+	connection.sync_calls(&state.all_private_channels());
 
+	// receive events forever
 	loop {
-		match connection.recv_event() {
-			Ok(Event::MessageCreate(message)) => {
-				println!("{} says: {}", message.author.name, message.content);
-				let mut split = message.content.split(" ");
-				let command = split.next().unwrap_or("");
+		let event = match connection.recv_event() {
+			Ok(event) => event,
+			Err(err) => {
+				println!("[Warning] Receive error: {:?}", err);
+				if let discord::Error::WebSocket(..) = err {
+					// Handle the websocket connection being dropped
+					let (new_connection, ready) = discord.connect().expect("connect failed");
+					connection = new_connection;
+					state = State::new(ready);
+					println!("[Ready] Reconnected successfully.");
+				}
+				if let discord::Error::Closed(..) = err {
+					break
+				}
+				continue
+			},
+		};
+		state.update(&event);
+
+		match event {
+			Event::MessageCreate(message) => {
+				use std::ascii::AsciiExt;
+				// safeguard: stop if the message is from us
+				if message.author.id == state.user().id {
+					continue
+				}
+
+				// reply to a command if there was one
+				let mut split = message.content.split(' ');
+				let first_word = split.next().unwrap_or("");
 				let argument = split.next().unwrap_or("");
 
-				if message.content == "!test" {
-					let _ = discord.send_message(message.channel_id, "This is a reply to the test.", "", false);
-				} else if message.content == prefix.to_owned() + "quit" {
-					    let _ = discord.send_message(message.channel_id, "Go fuck yourself Striped.", "", false);
+                if first_word.eq_ignore_ascii_case("!help") {
+                    if argument.eq_ignore_ascii_case("commands") {
+                        warn(discord.send_message(message.channel_id, "help, about, uber, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
+                    }
+                    else {
+                    warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args]", "", false))
+                    }
                 }
-                if message.content == prefix.to_owned() + "help" {
-                    let _ = discord.send_message(message.channel_id, "I can't help you. I'm just a bot.", "", false);
+
+                if first_word.eq_ignore_ascii_case("!about") {
+                    warn(discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false))
                 }
-                if message.content == prefix.to_owned() + "about" {
-                    let _ = discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false);
+
+                if first_word.eq_ignore_ascii_case("!uber"){
+                    if argument.eq_ignore_ascii_case("ddog75") {
+                        warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
+                    } else {
+                        warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
+                    }
                 }
-                if message.content == prefix.to_owned() + "uber" {
-                    let _ = discord.send_message(message.channel_id, "Fuck off m8.", "", false);
+
+                if first_word.eq_ignore_ascii_case("!sourcecode") {
+                    warn(discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false))
                 }
-                if message.content == prefix.to_owned() + "ask" {
-                    let _ = discord.send_message(message.channel_id, "Not just yet, I'll have the answers soon.", "", false);
-                }
-				if message.content == prefix.to_owned() + "givemeyourcode" {
-					let _ = discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false);
+
+                // Command for using dj.
+				if first_word.eq_ignore_ascii_case("!dj") {
+					let vchan = state.find_voice_user(message.author.id);
+					if argument.eq_ignore_ascii_case("stop") {
+						vchan.map(|(sid, _)| connection.voice(sid).stop());
+					} else if argument.eq_ignore_ascii_case("quit") {
+						vchan.map(|(sid, _)| connection.drop_voice(sid));
+					} else {
+						let output = if let Some((server_id, channel_id)) = vchan {
+							match discord::voice::open_ytdl_stream(argument) {
+								Ok(stream) => {
+									let voice = connection.voice(server_id);
+									voice.set_deaf(true);
+									voice.connect(channel_id);
+									voice.play(stream);
+									String::new()
+								},
+								Err(error) => format!("Error: {}", error),
+							}
+						} else {
+							"You must be in a voice channel to DJ".to_owned()
+						};
+						if !output.is_empty() {
+							warn(discord.send_message(message.channel_id, &output, "", false));
+						}
+					}
 				}
-				if message.content == prefix.to_owned() {
-					let _ = discord.send_message(message.channel_id, "Not a valid command?", "", false);
-				}
-}
-			Ok(_) => {}
-			Err(discord::Error::Closed(code, body)) => {
-				println!("Gateway closed on us with code {:?}: {}", code, body);
-				break
 			}
-			Err(err) => println!("Receive error: {:?}", err)
+			Event::VoiceStateUpdate(server_id, _) => {
+				// If someone moves/hangs up, and we are in a voice channel,
+				if let Some(cur_channel) = connection.voice(server_id).current_channel() {
+					// and our current voice channel is empty, disconnect from voice
+					match server_id {
+						Some(server_id) => if let Some(srv) = state.servers().iter().find(|srv| srv.id == server_id) {
+							if srv.voice_states.iter().filter(|vs| vs.channel_id == Some(cur_channel)).count() <= 1 {
+								connection.voice(Some(server_id)).disconnect();
+							}
+						},
+						None => if let Some(call) = state.calls().get(&cur_channel) {
+							if call.voice_states.len() <= 1 {
+								connection.voice(server_id).disconnect();
+							}
+						}
+					}
+				}
+			}
+			_ => {}, // discard other events
 		}
+	}
+}
+
+fn warn<T, E: ::std::fmt::Debug>(result: Result<T, E>) {
+	match result {
+		Ok(_) => {},
+		Err(err) => println!("[Warning] {:?}", err)
 	}
 }
