@@ -51,6 +51,7 @@ pub fn main() {
 				let first_word = split.next().unwrap_or("");
 				let argument = split.next().unwrap_or("");
 
+				//Section of avaliable commands.
                 if first_word.eq_ignore_ascii_case("!help") {
                     if argument.eq_ignore_ascii_case("commands") {
                         warn(discord.send_message(message.channel_id, "help, about, uber, distrowiki, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
@@ -99,6 +100,9 @@ pub fn main() {
 					//Not sorry.
 					if argument.eq_ignore_ascii_case("gentoo") {
 						warn(discord.send_message(message.channel_id, "Here's the Gentoo Wiki! https://wiki.gentoo.org/wiki/Main_Page", "", false))
+					}
+					if argument.eq_ignore_ascii_case("opensuse") {
+						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
 					}
 				}
 
