@@ -119,6 +119,9 @@ pub fn main() {
 					if argument.eq_ignore_ascii_case("opensuse") {
 						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
 					}
+					if argument.eq_ignore_ascii_case("windows") {
+						 warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
+					}
 				}
 
                 // Command for using dj.
