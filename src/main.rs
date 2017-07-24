@@ -63,7 +63,7 @@ pub fn main() {
 			warn(discord.send_message(message.channel_id, "Uber an object (I'm picky).", "", false))
 		    }
 		    else if argument.eq_ignore_ascii_case("distrowiki") {
-			warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include arch, ubuntu, debian, antergos, centos, and openbsd.", "", false))
+			warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include arch, ubuntu, debian, antergos, centos, openbsd, opensuse, and gentoo.", "", false))
 		    }
 		    else if argument.eq_ignore_ascii_case("sourcecode") {
 			warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
