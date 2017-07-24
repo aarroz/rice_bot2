@@ -53,7 +53,7 @@ pub fn main() {
 
                 if first_word.eq_ignore_ascii_case("!help") {
                     if argument.eq_ignore_ascii_case("commands") {
-                        warn(discord.send_message(message.channel_id, "help, about, uber, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
+                        warn(discord.send_message(message.channel_id, "help, about, uber, distrowiki, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
                     }
                     else {
                     warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args]", "", false))
@@ -65,7 +65,7 @@ pub fn main() {
                 }
 
                 if first_word.eq_ignore_ascii_case("!uber"){
-                    if argument.eq_ignore_ascii_case("ddog75") {
+			if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
                     } else {
                         warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
@@ -91,6 +91,10 @@ pub fn main() {
 					}
 					if argument.eq_ignore_ascii_case("centos") {
 						warn(discord.send_message(message.channel_id, "Here's the CentOS Wiki! https://wiki.centos.org/", "", false))
+					}
+					//Sorry OpenBSD users.
+					if argument.eq_ignore_ascii_case("openbsd") {
+						warn(discord.send_message(message.channel_id, "No, just no.", "", false))
 					}
 				}
 
