@@ -56,19 +56,19 @@ pub fn main() {
                     if argument.eq_ignore_ascii_case("commands") {
                         warn(discord.send_message(message.channel_id, "help, about, uber, distrowiki, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
                     }
-		    if argument.eq_ignore_ascii_case("about") {
+		    else if argument.eq_ignore_ascii_case("about") {
 			 warn(discord.send_message(message.channel_id, "Displays info about me. No arguments available.", "", false))
 		    }
-		    if argument.eq_ignore_ascii_case("uber") {
+		    else if argument.eq_ignore_ascii_case("uber") {
 			warn(discord.send_message(message.channel_id, "Uber an object (I'm picky).", "", false))
 		    }
-		    if argument.eq_ignore_ascii_case("distrowiki") {
+		    else if argument.eq_ignore_ascii_case("distrowiki") {
 			warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include arch, ubuntu, debian, antergos, centos, and openbsd.", "", false))
 		    }
-		    if argument.eq_ignore_ascii_case("sourcecode") {
+		    else if argument.eq_ignore_ascii_case("sourcecode") {
 			warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
 	            }
-		    if argument.eq_ignore_ascii_case("help") {
+		    else if argument.eq_ignore_ascii_case("help") {
 			warn(discord.send_message(message.channel_id, "Are you trying to break me?", "", false))
 	            }
                     else {
@@ -96,31 +96,34 @@ pub fn main() {
 					if argument.eq_ignore_ascii_case("arch") {
 						warn(discord.send_message(message.channel_id, "Here's the Arch Wiki! https://wiki.archlinux.org/", "", false))
 					}
-					if argument.eq_ignore_ascii_case("ubuntu") {
+					else if argument.eq_ignore_ascii_case("ubuntu") {
 						warn(discord.send_message(message.channel_id, "Here's the Ubuntu Wiki! https://wiki.ubuntu.com/", "", false))
 					}
-					if argument.eq_ignore_ascii_case("debian") {
+					else if argument.eq_ignore_ascii_case("debian") {
 						warn(discord.send_message(message.channel_id, "Here's the Debian Wiki! https://wiki.debian.org/", "", false))
 					}
-					if argument.eq_ignore_ascii_case("antergos") {
+					else if argument.eq_ignore_ascii_case("antergos") {
 						warn(discord.send_message(message.channel_id, "Here's the Antergos Wiki! https://antergos.com/wiki/", "", false))
 					}
-					if argument.eq_ignore_ascii_case("centos") {
+					else if argument.eq_ignore_ascii_case("centos") {
 						warn(discord.send_message(message.channel_id, "Here's the CentOS Wiki! https://wiki.centos.org/", "", false))
 					}
 					//Sorry OpenBSD users.
-					if argument.eq_ignore_ascii_case("openbsd") {
+					else if argument.eq_ignore_ascii_case("openbsd") {
 						warn(discord.send_message(message.channel_id, "No, just no.", "", false))
 					}
 					//Not sorry.
-					if argument.eq_ignore_ascii_case("gentoo") {
+					else if argument.eq_ignore_ascii_case("gentoo") {
 						warn(discord.send_message(message.channel_id, "Here's the Gentoo Wiki! https://wiki.gentoo.org/wiki/Main_Page", "", false))
 					}
-					if argument.eq_ignore_ascii_case("opensuse") {
+					else if argument.eq_ignore_ascii_case("opensuse") {
 						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
 					}
-					if argument.eq_ignore_ascii_case("windows") {
+					else if argument.eq_ignore_ascii_case("windows") {
 						 warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
+					}
+					else {
+						 warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
 					}
 				}
 
