@@ -92,9 +92,6 @@ pub fn main() {
 					if argument.eq_ignore_ascii_case("centos") {
 						warn(discord.send_message(message.channel_id, "Here's the CentOS Wiki! https://wiki.centos.org/", "", false))
 					}
-					else {
-						warn(discord.send_message(message.channel_id, "Please provide a valid distro. (Or that distro doesn't have a wiki)", "", false))
-					}
 				}
 
                 // Command for using dj.
