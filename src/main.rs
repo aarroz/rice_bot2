@@ -65,7 +65,7 @@ pub fn main() {
                 }
 
                 if first_word.eq_ignore_ascii_case("!uber"){
-			if argument.eq_ignore_ascii_case("ddog75") {
+					if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
                     } else {
                         warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
