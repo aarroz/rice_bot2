@@ -96,6 +96,7 @@ pub fn main() {
 					if argument.eq_ignore_ascii_case("openbsd") {
 						warn(discord.send_message(message.channel_id, "No, just no.", "", false))
 					}
+					//Not sorry.
 					if argument.eq_ignore_ascii_case("gentoo") {
 						warn(discord.send_message(message.channel_id, "Here's the Gentoo Wiki! https://wiki.gentoo.org/wiki/Main_Page", "", false))
 					}
