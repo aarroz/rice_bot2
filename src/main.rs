@@ -56,6 +56,21 @@ pub fn main() {
                     if argument.eq_ignore_ascii_case("commands") {
                         warn(discord.send_message(message.channel_id, "help, about, uber, distrowiki, and sourcecode are the avaliable commands. (!dj is buggy)", "", false))
                     }
+		    if argument.eq_ignore_ascii_case("about") {
+			 warn(discord.send_message(message.channel_id, "Displays info about me. No arguments available.", "", false))
+		    }
+		    if argument.eq_ignore_ascii_case("uber") {
+			warn(discord.send_message(message.channel_id, "Uber an object (I'm picky).", "", false))
+		    }
+		    if argument.eq_ignore_ascii_case("distrowiki") {
+			warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include arch, ubuntu, debian, antergos, centos, and openbsd.", "", false))
+		    }
+		    if argument.eq_ignore_ascii_case("sourcecode") {
+			warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
+	            }
+		    if argument.eq_ignore_ascii_case("help") {
+			warn(discord.send_message(message.channel_id, "Are you trying to break me?", "", false))
+	            }
                     else {
                     warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args]", "", false))
                     }
@@ -103,6 +118,9 @@ pub fn main() {
 					}
 					if argument.eq_ignore_ascii_case("opensuse") {
 						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
+					}
+					if argument.eq_ignore_ascii_case("windows") {
+						 warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
 					}
 				}
 
