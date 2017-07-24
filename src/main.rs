@@ -75,6 +75,27 @@ pub fn main() {
                 if first_word.eq_ignore_ascii_case("!sourcecode") {
                     warn(discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false))
                 }
+				//Section that prints wikis for linux distributions.
+				if first_word.eq_ignore_ascii_case("!distrowiki") {
+					if argument.eq_ignore_ascii_case("arch") {
+						warn(discord.send_message(message.channel_id, "Here's the Arch Wiki! https://wiki.archlinux.org/", "", false))
+					}
+					if argument.eq_ignore_ascii_case("ubuntu") {
+						warn(discord.send_message(message.channel_id, "Here's the Ubuntu Wiki! https://wiki.ubuntu.com/", "", false))
+					}
+					if argument.eq_ignore_ascii_case("debian") {
+						warn(discord.send_message(message.channel_id, "Here's the Debian Wiki! https://wiki.debian.org/", "", false))
+					}
+					if argument.eq_ignore_ascii_case("antergos") {
+						warn(discord.send_message(message.channel_id, "Here's the Antergos Wiki! https://antergos.com/wiki/", "", false))
+					}
+					if argument.eq_ignore_ascii_case("centos") {
+						warn(discord.send_message(message.channel_id, "Here's the CentOS Wiki! https://wiki.centos.org/", "", false))
+					}
+					else {
+						warn(discord.send_message(message.channel_id, "Please provide a valid distro. (Or that distro doesn't have a wiki)", "", false))
+					}
+				}
 
                 // Command for using dj.
 				if first_word.eq_ignore_ascii_case("!dj") {
