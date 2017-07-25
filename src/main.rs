@@ -71,6 +71,9 @@ pub fn main() {
 		    else if argument.eq_ignore_ascii_case("help") {
 			warn(discord.send_message(message.channel_id, "Are you trying to break me?", "", false))
 	            }
+		    else if argument.eq_ignore_ascii_case("[args]") {
+			warn(discord.send_message(message.channel_id, "You're helpless.", "", false))
+	            }
                     else {
                     warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args]", "", false))
                     }
