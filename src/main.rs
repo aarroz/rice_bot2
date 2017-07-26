@@ -122,11 +122,14 @@ pub fn main() {
 					else if argument.eq_ignore_ascii_case("opensuse") {
 						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
 					}
+					else if argument.eq_ignore_ascii_case("mint") {
+						warn(discord.send_message(massage.channel_id, "Here's the Arch install page! https://www.archlinux.org/download/", "", false))
+					}
 					else if argument.eq_ignore_ascii_case("windows") {
-						 warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
+						warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
 					}
 					else {
-						 warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
+						warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
 					}
 				}
 
