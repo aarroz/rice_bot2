@@ -1,9 +1,10 @@
 extern crate discord;
+extern crate quackngo;
 
 use std::env;
 use discord::{Discord, State};
 use discord::model::Event;
-
+use quackngo::Quack;
 
 pub fn main() {
 	// Log in to Discord using a bot token from the environment
@@ -86,7 +87,14 @@ pub fn main() {
                 if first_word.eq_ignore_ascii_case("!uber"){
 					if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
-                    } else {
+                    }
+					else if argument.eq_ignore_ascii_case("aspire") {
+						warn(discord.send_message(message.channel_id, "Not the meatballs.", "", false))
+					}
+					else if argument.eq_ignore_ascii_case("nic") {
+						warn(discord.send_message(message.channel_id, "NOT THE BEES!!!", "", false))
+					}
+					 else {
                         warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
                     }
                 }
