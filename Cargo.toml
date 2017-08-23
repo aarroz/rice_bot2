@@ -6,4 +6,3 @@ authors = ["aarroz"]
 [dependencies]
 discord = { git = "https://github.com/SpaceManiac/discord-rs.git" }
 rand = "0.3"
-quackngo = "0.1.4"

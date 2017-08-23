@@ -4,7 +4,6 @@ extern crate quackngo;
 use std::env;
 use discord::{Discord, State};
 use discord::model::Event;
-use quackngo::Quack;
 
 pub fn main() {
 	// Log in to Discord using a bot token from the environment
