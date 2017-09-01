@@ -74,7 +74,7 @@ pub fn main() {
 						warn(discord.send_message(message.channel_id, "You're helpless.", "", false))
 	            	}
                     else {
-                    warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args]", "", false))
+                    warn(discord.send_message(message.channel_id, "Umm, you gotta use it like this. !help [args] Try using the `commands` argument.", "", false))
                     }
                 }
 
