@@ -1,5 +1,4 @@
 extern crate discord;
-extern crate quackngo;
 
 use std::env;
 use discord::{Discord, State};
