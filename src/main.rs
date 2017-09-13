@@ -62,7 +62,7 @@ pub fn main() {
 						warn(discord.send_message(message.channel_id, "Uber an object (I'm picky).", "", false))
 		    		}
 		    		else if argument.eq_ignore_ascii_case("distrowiki") {
-						warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include arch, ubuntu, debian, antergos, centos, openbsd, opensuse, and gentoo.", "", false))
+						warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include Arch, Ubuntu, Debian, Antergos, CentOS, OpenBSD, Opensuse, Sabayon, KaliLinux, and Gentoo.", "", false))
 		    		}
 		    		else if argument.eq_ignore_ascii_case("sourcecode") {
 						warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
@@ -128,12 +128,20 @@ pub fn main() {
 					else if argument.eq_ignore_ascii_case("opensuse") {
 						warn(discord.send_message(message.channel_id, "Here's the OpenSuse Wiki! https://en.opensuse.org/Portal:Wiki", "", false))
 					}
+					else if argument.eq_ignore_ascii_case("sabayon") {
+						warn(discord.send_message(message.channel_id, "Here's the Sabayon Wiki! https://wiki.sabayon.org/", "", false))
+					}
+					else if argument.eq_ignore_ascii_case("kalilinux") {
+						warn(discord.send_message(message.channel_id, "Heres's the KaliLinux Wiki! https://en.wikipedia.org/wiki/Kali_Linux", "", false))
+					}
 					else if argument.eq_ignore_ascii_case("mint") {
 						warn(discord.send_message(message.channel_id, "Here's the Arch install page! https://www.archlinux.org/download/", "", false))
 					}
 					else if argument.eq_ignore_ascii_case("windows") {
-						warn(discord.send_message(message.channel_id, "Thats not a distro", "", false))
+						warn(discord.send_message(message.channel_id, "Thats not a distro.", "", false))
 					}
+					else if arhument.eq_ignore_ascii_case("macos") {
+						warn(discord.send_message(message.channel_id, "Sure its close to linux, but I'm too tired to have that argument.", "", false))
 					else {
 						warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
 					}
