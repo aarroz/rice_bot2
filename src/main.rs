@@ -140,7 +140,7 @@ pub fn main() {
 					else if argument.eq_ignore_ascii_case("windows") {
 						warn(discord.send_message(message.channel_id, "Thats not a distro.", "", false))
 					}
-					else if arhument.eq_ignore_ascii_case("macos") {
+					else if argument.eq_ignore_ascii_case("macos") {
 						warn(discord.send_message(message.channel_id, "Sure its close to linux, but I'm too tired to have that argument.", "", false))
 					else {
 						warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
