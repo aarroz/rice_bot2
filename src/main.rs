@@ -142,6 +142,7 @@ pub fn main() {
 					}
 					else if argument.eq_ignore_ascii_case("macos") {
 						warn(discord.send_message(message.channel_id, "Sure its close to linux, but I'm too tired to have that argument.", "", false))
+					}
 					else {
 						warn(discord.send_message(message.channel_id, "Please use a distro from !help distrowiki.", "", false))
 					}
