@@ -62,7 +62,7 @@ pub fn main() {
 						warn(discord.send_message(message.channel_id, "Uber an object (I'm picky).", "", false))
 		    		}
 		    		else if argument.eq_ignore_ascii_case("distrowiki") {
-						warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include Arch, Ubuntu, Debian, Antergos, CentOS, OpenBSD, Opensuse, Sabayon, KaliLinux, and Gentoo.", "", false))
+						warn(discord.send_message(message.channel_id, "Finds the wiki of the specified distro. Arguments include Arch, Ubuntu, Debian, Antergos, Mint, CentOS, OpenBSD, Opensuse, Sabayon, KaliLinux, Solus, and Gentoo.", "", false))
 		    		}
 		    		else if argument.eq_ignore_ascii_case("sourcecode") {
 						warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
@@ -135,7 +135,10 @@ pub fn main() {
 						warn(discord.send_message(message.channel_id, "Heres's the KaliLinux Wiki! https://en.wikipedia.org/wiki/Kali_Linux", "", false))
 					}
 					else if argument.eq_ignore_ascii_case("mint") {
-						warn(discord.send_message(message.channel_id, "Here's the Arch install page! https://www.archlinux.org/download/", "", false))
+						warn(discord.send_message(message.channel_id, "Here's the Mint newbie page! https://forums.linuxmint.com/viewforum.php?f=90", "", false))
+					}
+					else if argument.eq_ignore_ascii_case("solus") {
+						warn(discord.send_message(message.channel_id, "There is no wiki for solus, however there is the help page! https://solus-project.com/help-center/home/", "", false))
 					}
 					else if argument.eq_ignore_ascii_case("windows") {
 						warn(discord.send_message(message.channel_id, "Thats not a distro.", "", false))
