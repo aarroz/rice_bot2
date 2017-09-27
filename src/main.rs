@@ -82,25 +82,26 @@ pub fn main() {
                 if first_word.eq_ignore_ascii_case("!about") {
                     warn(discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false))
                 }
+		            if first_word.eq_ignore_ascii_case("!wheresteal") {
+			              warn(discord.send_message(message.channel_id, "Go ask him, I know nothing ;_;", "", false))
+		            }
                 if first_word.eq_ignore_ascii_case("!hello") {
-					warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
-				}
-
+					          warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
+				        }
                 if first_word.eq_ignore_ascii_case("!uber"){
-					if argument.eq_ignore_ascii_case("ddog75") {
+					          if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
                     }
-					else if argument.eq_ignore_ascii_case("aspire") {
-						warn(discord.send_message(message.channel_id, "Not the meatballs.", "", false))
-					}
-					else if argument.eq_ignore_ascii_case("nic") {
-						warn(discord.send_message(message.channel_id, "NOT THE BEES!!!", "", false))
-					}
-					 else {
+					          else if argument.eq_ignore_ascii_case("aspire") {
+						            warn(discord.send_message(message.channel_id, "Not the meatballs.", "", false))
+					          }
+					          else if argument.eq_ignore_ascii_case("nic") {
+					            	warn(discord.send_message(message.channel_id, "NOT THE BEES!!!", "", false))
+					          }
+					          else {
                         warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
                     }
                 }
-
                 if first_word.eq_ignore_ascii_case("!sourcecode") {
                     warn(discord.send_message(message.channel_id, "Okay, here you go. https://github.com/aarroz/rice_bot2", "", false))
                 }
