@@ -78,9 +78,13 @@ pub fn main() {
                     }
                 }
 
+				//Fun Commands.
                 if first_word.eq_ignore_ascii_case("!about") {
                     warn(discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false))
                 }
+                if first_word.eq_ignore_ascii_case("!hello") {
+					warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
+				}
 
                 if first_word.eq_ignore_ascii_case("!uber"){
 					if argument.eq_ignore_ascii_case("ddog75") {
