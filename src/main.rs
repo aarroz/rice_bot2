@@ -83,15 +83,18 @@ pub fn main() {
                     warn(discord.send_message(message.channel_id, "I have no clue. All I know is that I was written by Arroz in a language called Rust, and my code is still being developed.", "", false))
                 }
 		        if first_word.eq_ignore_ascii_case("!wheresteal") {
-			        warn(discord.send_message(message.channel_id, "Go ask him, I know nothing ;_;", "", false))
+			        warn(discord.send_message(message.channel_id, "He's alive and well.", "", false)) //yay
 		        }
                 if first_word.eq_ignore_ascii_case("!hello") {
-					          warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
-				        }
+				warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
+			}
+		if first_word.eq_ignore ascii_case("!bye") {
+				warn(discord.send_message(message.channel_id, "https://tenor.com/woQk.gif", "", false))
+			}
                 if first_word.eq_ignore_ascii_case("!uber"){
 					if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
-                    }
+                    	}
 					else if argument.eq_ignore_ascii_case("aspire") {
 						warn(discord.send_message(message.channel_id, "Not the meatballs.", "", false))
 					}
