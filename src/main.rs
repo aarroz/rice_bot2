@@ -87,14 +87,14 @@ pub fn main() {
 		        }
                 if first_word.eq_ignore_ascii_case("!hello") {
 				warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
-			}
-		if first_word.eq_ignore ascii_case("!bye") {
+				}
+				if first_word.eq_ignore ascii_case("!bye") {
 				warn(discord.send_message(message.channel_id, "https://tenor.com/woQk.gif", "", false))
-			}
+				}
                 if first_word.eq_ignore_ascii_case("!uber"){
 					if argument.eq_ignore_ascii_case("ddog75") {
                         warn(discord.send_message(message.channel_id, "Alright, 10 minutes.", "", false))
-                    	}
+                    }
 					else if argument.eq_ignore_ascii_case("aspire") {
 						warn(discord.send_message(message.channel_id, "Not the meatballs.", "", false))
 					}
