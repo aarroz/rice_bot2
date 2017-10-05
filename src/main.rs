@@ -67,6 +67,9 @@ pub fn main() {
 		    else if argument.eq_ignore_ascii_case("sourcecode") {
 			warn(discord.send_message(message.channel_id, "Displays where I am on GitHub. No arguments available", "", false))
 	            }
+		    else if argument.eq_ignore_ascii_case("dj") {
+			warn(discord.send_message(message.channel_id, "Play a song! Arguments must incluse a youtube url.", "", false))
+		    }
 		    else if argument.eq_ignore_ascii_case("help") {
 			warn(discord.send_message(message.channel_id, "Are you trying to break me?", "", false))
 	            }
@@ -89,7 +92,7 @@ pub fn main() {
 			warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
 		}
 		if first_word.eq_ignore ascii_case("!bye") {
-				warn(discord.send_message(message.channel_id, "https://tenor.com/woQk.gif", "", false))
+			warn(discord.send_message(message.channel_id, "https://tenor.com/woQk.gif", "", false))
 		}
                 if first_word.eq_ignore_ascii_case("!uber"){
 			if argument.eq_ignore_ascii_case("ddog75") {
@@ -117,7 +120,7 @@ pub fn main() {
 				warn(discord.send_message(message.channel_id, "Here's the Ubuntu Wiki! https://wiki.ubuntu.com/", "", false))
 			}
 			else if argument.eq_ignore_ascii_case("debian") {
-						warn(discord.send_message(message.channel_id, "Here's the Debian Wiki! https://wiki.debian.org/", "", false))
+				warn(discord.send_message(message.channel_id, "Here's the Debian Wiki! https://wiki.debian.org/", "", false))
 			}
 			else if argument.eq_ignore_ascii_case("antergos") {
 				warn(discord.send_message(message.channel_id, "Here's the Antergos Wiki! https://antergos.com/wiki/", "", false))
