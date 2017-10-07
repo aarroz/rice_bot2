@@ -91,7 +91,7 @@ pub fn main() {
 		if first_word.eq_ignore_ascii_case("!hello") {
 			warn(discord.send_message(message.channel_id, "https://www.tenor.co/xA8B.gif", "", false))
 		}
-		if first_word.eq_ignore ascii_case("!bye") {
+		if first_word.eq_ignore_ascii_case("!bye") {
 			warn(discord.send_message(message.channel_id, "https://tenor.com/woQk.gif", "", false))
 		}
                 if first_word.eq_ignore_ascii_case("!uber"){
