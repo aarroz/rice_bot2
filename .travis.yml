@@ -8,4 +8,4 @@ matrix:
     - rust: nightly
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y libsodium-dev pkg-config libopus-dev openssl
+  - sudo apt-get install -y libsodium18 pkg-config libopus-dev openssl
