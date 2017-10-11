@@ -70,6 +70,9 @@ pub fn main() {
 		    else if argument.eq_ignore_ascii_case("dj") {
 			warn(discord.send_message(message.channel_id, "Play a song! Arguments must incluse a youtube url.", "", false))
 		    }
+		    else if argument.eq_ignore_ascii_case("fun") {
+			warn(discord.send_message(message.channel_id, "These commands include wheresteal, hello, and bye.", "", false))
+		    }
 		    else if argument.eq_ignore_ascii_case("help") {
 			warn(discord.send_message(message.channel_id, "Are you trying to break me?", "", false))
 	            }
@@ -103,6 +106,9 @@ pub fn main() {
 			}
 			else if argument.eq_ignore_ascii_case("nic") {
 				warn(discord.send_message(message.channel_id, "NOT THE BEES!!!", "", false))
+			}
+			else if argument.eq_ignore_ascii_case("pootis") {
+				warn(discord.send_message(message.channel_id, "Talk to your local engineer about our brand new dispenser, now with 5% more reliability!", "", false))
 			}
 			else {
                         	warn(discord.send_message(message.channel_id, "Fuck off!", "", false))
