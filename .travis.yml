@@ -1,0 +1,14 @@
+language: rust
+dist: trusty
+sudo: required
+rust:
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
+before_install:
+  - sudo add-apt-repository ppa:chris-lea/libsodium -y
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libsodium-dev pkg-config libopus-dev openssl

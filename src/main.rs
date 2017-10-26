@@ -291,7 +291,6 @@ pub fn main() {
                         ))
                     }
                 }
-
                 // Command for using dj.
                 if first_word.eq_ignore_ascii_case("!dj") {
                     let vchan = state.find_voice_user(message.author.id);
