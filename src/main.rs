@@ -126,7 +126,7 @@ pub fn main() {
                 if first_word.eq_ignore_ascii_case("!wheresteal") {
                     warn(discord.send_message(
                         message.channel_id,
-                        "Go ask him, I know nothing ;_;",
+                        "How about where's Fate?! DOES ANYONE CARE ABOUT FATE?",
                         "",
                         false,
                     ))
