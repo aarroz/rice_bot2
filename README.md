@@ -17,6 +17,11 @@ sudo apt install pkg-config libsodium-dev libopus-dev openssl ffmpeg youtube-dl
 ```
 Using Pip for youtube-dl is recomended.
 
+#### For Fedora 27
+```sh
+sudo dnf install pkg-config libsodium-devel opus-devel 
+```
+
 #### For OpenSUSE Tumbleweed
 ```sh
 sudo zypper install pkg-config libsodium-devel libopus-devel libopenssl-devel youtubedl ffmpeg
