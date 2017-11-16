@@ -17,6 +17,14 @@ sudo apt install pkg-config libsodium-dev libopus-dev openssl ffmpeg youtube-dl
 ```
 Using Pip for youtube-dl is recomended.
 
+#### For Fedora 27
+```sh
+sudo dnf install pkg-config libsodium-devel opus-devel compat-openssl10-devel ffmpeg youtube-dl
+```
+Using `compat-openssl10-devel` instead of `openssl-devel` package since Fedora is ahead in OpenSSL version and incompatible with Rust OpenSSL package.
+
+`ffmpeg` is only avaliable through RPMFusion.
+
 #### For OpenSUSE Tumbleweed
 ```sh
 sudo zypper install pkg-config libsodium-devel libopus-devel libopenssl-devel youtubedl ffmpeg
