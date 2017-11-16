@@ -19,8 +19,11 @@ Using Pip for youtube-dl is recomended.
 
 #### For Fedora 27
 ```sh
-sudo dnf install pkg-config libsodium-devel opus-devel 
+sudo dnf install pkg-config libsodium-devel opus-devel compat-openssl10-devel ffmpeg youtube-dl
 ```
+Using compat-openssl10-devel instead of openssl package since Fedora is ahead in OpenSSL version.
+
+`ffmpeg` is only avaliable through RPMFusion.
 
 #### For OpenSUSE Tumbleweed
 ```sh
