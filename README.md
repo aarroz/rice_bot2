@@ -8,7 +8,7 @@ based off the [Discord-rs](https://github.com/SpaceManiac/discord-rs) library.
 Required libraries to install in order to use the bot.
 
 `
-pkg-config libsodium opus openssl ffmpeg youtube-dl
+pkg-config libsodium opus openssl ffmpeg youtube-dl (sometimes libssl-dev)
 `
 
 #### For Ubuntu 16.04 LTS
